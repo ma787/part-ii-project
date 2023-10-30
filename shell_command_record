@@ -1,0 +1,52 @@
+Setting up ocaml switch:
+~$ opam switch create 4.10.0
+~$ eval $(opam env --switch=4.10.0)
+
+Installing chamelon dependencies (NOTE: had issue with package conflicts so installed manually to be safe):
+~$ opam install dune=2.9.3
+~$ opam install alcotest=1.5.0 --with-test
+~$ opam install alcotest-lwt=1.5.0 --with-test
+~$ opam install bechamel=0.4.0 --with-test
+~$ opam install bechamel-js=0.4.0 --with-test
+~$ opam install checkseum=0.3.2
+~$ opam install fpath=0.7.3 --with-test
+~$ opam install crowbar=0.2.1 --with-test
+~$ opam install cstruct=6.2.0
+~$ opam install cstruct-lwt=6.2.0
+~$ opam install digestif=1.0.0
+~$ opam install mirage-block=3.0.0
+~$ opam install mirage-block-combinators=3.0.0 --with-test
+~$ opam install mirage-block-unix=2.13.0 --with-test
+~$ opam install mirage-clock=4.0.0
+~$ opam install mirage-clock-unix=4.0.0 --with-test
+~$ opam install mirage-crypto-rng=0.10.6 --with-test
+~$ opam install mirage-kv=4.0.1
+~$ opam install mirage-logs=1.2.0
+~$ opam install ocaml-lsp-server=1.4.1 # for use with vscode
+
+Installing chamelon and littlefs-fuse:
+~/Project$ git clone https://github.com/yomimono/chamelon.git
+~/Project$ sudo apt install libfuse-dev
+~/Project$ git clone https://github.com/littlefs-project/littlefs-fuse.git
+~/Project$ cd littlefs-fuse-2.7.2
+~/Project/littlefs-fuse-2.7.2/$ make
+~/Project/littlefs-fuse-2.7.2/$ cd ~/Project/chamelon-0.1.2
+~/Project/chamelon-0.1.2$ dune build @_default
+
+Mounting the filesystem:
+~/Project/chamelon-0.1.2$ sudo dd if=/dev/sda1 of=_build/default/src/test.img bs=64K count=1
+~/Project/chamelon-0.1.2$ sudo _build/default/src/chamelon.exe format /dev/sda1
+~/Project/chamelon-0.1.2$ sudo ~/fuse-littlefs/lfs --block_size=512 -s /dev/sda1 /mnt
+~/Project/chamelon-0.1.2$ cd /Project
+
+Running tests:
+~/Project$ sudo dd_tests/dd_tests.sh
+~/Project$ sudo hdparm_tests/hdparm_tests.sh
+~/Project$ sudo iozone -a -n 1g -g 2g -y 512k -q 4m /dev/sda1
+~/Project$ git clone https://github.com/psteinb/iozone2csv.git
+~/Project$ cd iozone2csv
+~/Project/iozone2csv$ mv ~/Project/iozone.out .
+~/Project/iozone2csv$ python3 ./iozone2csv.py iozone.out
+
+Unmounting filesystem:
+~/Project$ sudo umount -v /mnt
