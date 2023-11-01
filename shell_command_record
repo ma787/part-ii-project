@@ -42,7 +42,7 @@ Mounting the filesystem:
 Running tests:
 ~/Project$ sudo dd_tests/dd_tests.sh
 ~/Project$ sudo hdparm_tests/hdparm_tests.sh
-~/Project$ sudo iozone -a -n 1g -g 2g -y 512k -q 4m /dev/sda1
+~/Project$ sudo iozone -a /dev/sda1 > iozone.csv
 ~/Project$ git clone https://github.com/psteinb/iozone2csv.git
 ~/Project$ cd iozone2csv
 ~/Project/iozone2csv$ mv ~/Project/iozone.out .
