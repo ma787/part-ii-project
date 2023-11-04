@@ -31,22 +31,20 @@ Installing chamelon and littlefs-fuse:
 ~/Project$ cd littlefs-fuse-2.7.2
 ~/Project/littlefs-fuse-2.7.2/$ make
 ~/Project/littlefs-fuse-2.7.2/$ cd ~/Project/chamelon-0.1.2
-~/Project/chamelon-0.1.2$ dune build @_default
+~/Project/chamelon-0.1.2$ dune build @default
 
 Mounting the filesystem:
-~/Project/chamelon-0.1.2$ sudo dd if=/dev/sda1 of=_build/default/src/test.img bs=64K count=1
 ~/Project/chamelon-0.1.2$ sudo _build/default/src/chamelon.exe format /dev/sda1
-~/Project/chamelon-0.1.2$ sudo ~/fuse-littlefs/lfs --block_size=512 -s /dev/sda1 /mnt
+~/Project/chamelon-0.1.2$ sudo ~/Project/fuse-littlefs/lfs --block_size=512 -s /dev/sda1 /mnt
 ~/Project/chamelon-0.1.2$ cd /Project
 
 Running tests:
-~/Project$ sudo dd_tests/dd_tests.sh
-~/Project$ sudo hdparm_tests/hdparm_tests.sh
-~/Project$ sudo iozone -a /dev/sda1 > iozone.csv
 ~/Project$ git clone https://github.com/psteinb/iozone2csv.git
-~/Project$ cd iozone2csv
-~/Project/iozone2csv$ mv ~/Project/iozone.out .
-~/Project/iozone2csv$ python3 ./iozone2csv.py iozone.out
+~/Project$ cp iozone2csv/iozone2csv.py all_tests
+~/Project$ rm -rf iozone2csv
+~/Project$ cd all_tests
+~/Project/all_tests$ sudo ./all_tests.sh
 
 Unmounting filesystem:
+~/Project$ sudo rm -rf /mnt/*
 ~/Project$ sudo umount -v /mnt
