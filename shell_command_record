@@ -48,3 +48,18 @@ Running tests:
 Unmounting filesystem:
 ~/Project$ sudo rm -rf /mnt/*
 ~/Project$ sudo umount -v /mnt
+
+Creating a loop device:
+~$ sudo chmod a+rw /dev/loop20
+~$ dd if=/dev/zero of=image bs=512 count=40000000 (20GB image)
+~$ losetup /dev/loop20 image
+~/Project/chamelon$ sudo _build/default/src/chamelon.exe format /dev/loop20
+~/Project/chamelon$ sudo ~/Project/lfs-fuse/lfs --block_size=512 -s /dev/loop20 /mnt
+
+Debugging the b-tree code:
+~/Project/ocaml-btree/ocaml-btree$ ocamlc -g btree.ml -o btree.out
+~/Project/ocaml-btree/ocaml-btree$ ocamldebug btree.out
+
+Building and testing b-tree code:
+~/Project/ocaml-btree/ocaml-btree$ dune build
+~/Project/ocaml-btree/ocaml-btree$ dune exec ./test.exe
