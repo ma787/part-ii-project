@@ -1,4 +1,4 @@
-`Provide an intermediate interface that implements block operations on top of the sector-based API provided by a Mirage_block.S implementer.
+`Provide an intermediate interface that implements block operations on top of the sector-based API provided by a Mirage_block.S implementer.`
 ### module Make(Sectors : Mirage_block.S)
 - Include all of the definitions in Mirage_block.S
 - Definitions for connect and block_count
