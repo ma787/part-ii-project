@@ -43,18 +43,21 @@ Running tests:
 ~/Project$ cp iozone2csv/iozone2csv.py all_tests
 ~/Project$ rm -rf iozone2csv
 ~/Project$ cd all_tests
-~/Project/all_tests$ sudo ./all_tests.sh
+~/Project/all_tests$ sudo ./all_tests.sh /dev/sda1
 
 Unmounting filesystem:
 ~/Project$ sudo rm -rf /mnt/*
 ~/Project$ sudo umount -v /mnt
 
 Creating a loop device:
-~$ sudo chmod a+rw /dev/loop20
+~$ sudo chmod a+rw /dev/loop22
 ~$ dd if=/dev/zero of=image bs=512 count=40000000 (20GB image)
-~$ losetup /dev/loop20 image
-~/Project/chamelon$ sudo _build/default/src/chamelon.exe format /dev/loop20
-~/Project/chamelon$ sudo ~/Project/lfs-fuse/lfs --block_size=512 -s /dev/loop20 /mnt
+~$ losetup /dev/loop22 image
+~/Project/chamelon$ sudo _build/default/src/chamelon.exe format /dev/loop22
+~/Project/chamelon$ sudo ~/Project/lfs-fuse/lfs --block_size=512 -s /dev/loop22 /mnt
+
+Detaching loop device:
+~$ sudo losetup -d /dev/loop22
 
 Debugging the b-tree code:
 ~/Project/ocaml-btree/ocaml-btree$ ocamlc -g btree.ml -o btree.out
