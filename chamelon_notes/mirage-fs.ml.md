@@ -12,9 +12,9 @@
 - Else, takes the head of the pointer list and calls itself with pointer consed to l, index decremented by one and the head as the current pointer
 ### module Find
 #### entries_of_name : t -> directory_head -> string -> (blockwise_entry_list list, [\`No_id of key | \`Not_found of key]) result Lwt.t
-- ``[entries_of_name t head name] scans [head] (and any subsequent blockpairs in the directory's hardtail list) for `id` entries matching [name]. If an `id` is found for [name], all entries matching `id` from the directory are returned (compacted).
+- ``[entries_of_name t head name] scans [head] (and any subsequent blockpairs in the directory's hardtail list) for `id` entries matching [name]. If an `id` is found for [name], all entries matching `id` from the directory are returned (compacted).``
 #### find_first_blockpair_of_directory : t -> directory_head -> string list -> [\`Basename_on of directory_head | \`No_id of string | \`No_structs] Lwt.t
-- ``[find_first_blockpair_of_directory t head l] finds and enters the segments in [l] recursively until none remain. It returns \`No_id if an entry is not present and \`No_structs if an entry is present, but does not represent a valid directory.
+- ``[find_first_blockpair_of_directory t head l] finds and enters the segments in [l] recursively until none remain. It returns \`No_id if an entry is not present and \`No_structs if an entry is present, but does not represent a valid directory.``
 ### get_ctz t key (pointer, file_size)
 - t -> 'a -> int64 * int -> (string, [> \`Not_found of 'a]) result Lwt.t
 - \`Not_found is a type variable
@@ -56,7 +56,7 @@
 - Reads data from cstruct stored in t's block into cstruct 'data'
 - Catches and logs read error, returning Error result containing \`Not_found and empty key
 - Calls Chamelon.File.of_block to get pointers from t's block
-- `worst case: we want an index that's between our index and (our index / 2), so we can't jump to it (or this index isn't a multiple of 2, so we only have one link); we just have to iterate backward until we get there
+- `worst case: we want an index that's between our index and (our index / 2), so we can't jump to it (or this index isn't a multiple of 2, so we only have one link); we just have to iterate backward until we get there`
 - Checks if the desired index is greater than half of the current index, or if there are less than two pointers
 - If this is the case, either calls itself with the head of pointers and index decremented by 1 (go to previous block), or returns Error result with containing \`Not_found and empty key if the pointer list does not have a head
 - Otherwise, either calls itself with the second value of pointers index halved or returns Error result with containing \`Not_found and empty key if the match fails
@@ -69,14 +69,14 @@
 - Chamelon.File.last_block_index is called with file_size=offset to get offset_index, the block index of the starting block to read from
 - read_raw_blocks is called with offset_index and the pointer to and block index of the last byte of interest
 - Returns result containing Ok and "" if the list is empty 
-- ``since our list is just the raw block contents of the relevant bit of the file, we probably need to drop some bytes from the beginning in order to correctly return the file starting at the right offset
+- ``since our list is just the raw block contents of the relevant bit of the file, we probably need to drop some bytes from the beginning in order to correctly return the file starting at the right offset``
 - Calls Chamelon.File.first_byte_on_index with offset_index to get the offset of the first block
-- (regarding the line below) ``this calculation is correct *if* we correctly identified the first block associated with this offset. Otherwise it's wrong garbage nonsense, so let's hope we got that first block correct :sweat_smile:
+- (regarding the line below) ``this calculation is correct *if* we correctly identified the first block associated with this offset. Otherwise it's wrong garbage nonsense, so let's hope we got that first block correct :sweat_smile:``
 - Shifts the offset of the first block in the list to the offset subtracted by the first block offset as explained in the first comment in this method
 - The first block is consed to the front of the block list and the list is concatenated into one cstruct before being converted into a string
-- ``we need to trim the results to either:
-	``- the requested length, if offset + length is < file size
-	``- the file size minus the offset, if offset + length is > file_size
+- ``we need to trim the results to either:``
+	``- the requested length, if offset + length is < file size``
+	``- the file size minus the offset, if offset + length is > file_size``
 #### read_raw_blocks ~offset_index l index pointer
 - offset_index:int -> Cstruct.t list -> int -> int64 -> (Cstruct.t list, This_Block.error) result Lwt.t
 - Reads data from cstruct stored in t's block into cstruct 'data'
@@ -87,16 +87,16 @@
 ## write_ctz_block t blocks written index so_far data
 - t -> int64 list -> (int * int64) list -> int -> int -> string -> ((int * int64) list, [> \`No_space]) result Lwt.t
 - \`No_space is a type variable
-- ``we purposely don't reverse the list because we're going to want the *last* block for inclusion in the ctz structure
+- ``we purposely don't reverse the list because we're going to want the *last* block for inclusion in the ctz structure``
 - If so_far is greater than or equal to the length of data, then return result containing Ok and written
 - Otherwise, if blocks is empty, return result containing Error and \`No_space
 - Otherwise, the head and tail of the list blocks are separated in the last pattern, with the head of blocks being a pointer
 - An empty cstruct block_cs of size t.block_size is created
 - Chamelon.File.n_pointers is used to get the number of CTZ pointers for the block at this index, and the space taken up by these pointers (skip_list_length) is calculated by multplying the result by 8
 - The length of the data to write to this block is the minimum of the space available in the block (t.block_size - skip_list_length) and the length of data left to write ((String.length data) - so_far)
-- ``the 0th item in the skip list is always (index - 1). Only exception is the last block in the list (the first block in the file), which has no skip list
+- ``the 0th item in the skip list is always (index - 1). Only exception is the last block in the list (the first block in the file), which has no skip list``
 - If written is empty, does nothing
-- ``the first entry in the skip list should be for block _last_index, which is index - 1
+- ``the first entry in the skip list should be for block _last_index, which is index - 1``
 - Otherwise, the first entry of written is mapped to (\_last_index, last_pointer) and last_pointer is written to block_cs at offset 0
 - The CTZ pointers are written by iterating from 1 to skip_list_size - 1
 - For each value of n_skip_list, the destination_block_index is found by dividing the index by 1 left-shifted n_skip_list times
@@ -106,13 +106,13 @@
 - Calls itself, consing (index, pointer) to written, incrementing index by 1 and incrementing so_far by data_length
 ## write_ctz t data
 - t -> string -> ((int * int64) list, write_error) result Lwt.t
-- ``Get the correct number of blocks to write 'data' as a CTZ, then write it.
+- ``Get the correct number of blocks to write 'data' as a CTZ, then write it.`
 - Calls Chamelon.File.last_block_index with file_size being the length of the data to write to get the last block index
 - Uses Allocate.get_blocks with last_block_index + 1 to get blocks
 - Calls write_ctz_block with blocks=blocks, written=[], index=0, so_far=0 and data=data
 ## write_in_ctz dir block_pair t filename data entries
 - int64 * int64 -> t -> string -> string -> Chamelon.Entry.t list -> (unit, write_error) result Lwt.t
-- ``Find the correct directory structure in which to write the metadata entry for the CTZ pointer. Write the CTZ, then write the metadata.
+- ``Find the correct directory structure in which to write the metadata entry for the CTZ pointer. Write the CTZ, then write the metadata.``
 - Calls Read.block_of_block_pair to get directory root block, or returns result containing Error, \`Not_found and filename key
 - If the directory has a hardtail next_blockpair where the directory continues, calls itself with dir_block_pair=next_blockpair
 - Otherwise, gets data length and calls write_ctz
