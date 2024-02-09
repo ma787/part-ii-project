@@ -25,7 +25,7 @@
 - `it doesn't really need to be tags, it could be any 4-byte cstruct`
 - Takes a 32-bit struct 'into' and splits it into four 8-bit regions
 - XORs the 8-bit int stored in each region of 'into' with the 8-bit int stored in the corresponding region of the cstruct 'arg'
-- The result of each xor is stored in the corresponding region of 'into'
+- The result of each XOR is stored in the corresponding region of 'into'
 ### delete id
 - int -> t
 - Creates a SPLICE tag with length 0 and the given id
@@ -40,7 +40,7 @@
 	- get the chunk by ANDing the leading 12 bits of r with 000011111111
 	- get the id by ANDing the leading 22 bits of r with 0000000000001111111111
 	- get the length by ANDing r with 00000000000000000000001111111111
-- If the abstract type evaluates to None, returns an Error
+-  If the abstract type evaluates to None, returns an Error
 - Else, combines the abstract_type and chunk into type3 and returns result containing Ok and the tag attributes
 ### into_cstruct_raw cs t
 - Cstruct.t -> t -> unit
