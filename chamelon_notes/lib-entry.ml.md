@@ -29,6 +29,7 @@
 	- If the tag is an inline tag, returns None
 - If the tag is a hardtail, returns an option with a link containing a pointer to the next metadata pair in the directory
 - Otherwise, returns None
+- A link is either a pointer to a pair of metadata blocks (which can be directories) or a pointer and file size which uniquely identifies a file
 ### compact entries
 - (Tag.t * 'a) list -> (Tag.t * 'a) list (i.e., t list -> t list)
 - ``[compact l] checks to see whether [l] contains any deletion entries; if so, it removes the entries to be deleted and the corresponding deletion entry, and returns the resulting list. See littlefs documentation on compaction for more information.``
@@ -52,13 +53,14 @@
 	- Converts the current tag to a cstruct and increments the pointer to cs by the size of the current entry
 	- Incremented pointer and current tag cstruct passed to function for the next entry of the list
 	- Initial values of the pointer and tag are 0 and starting_xor_tag
-- Returns the pointer to the final entry in cs and the tag of the final entry in l
+- Returns the pointer to the final (CRC) entry in cs and the tag of the final non-CRC entry in l
 ### to_cstructv ~starting_xor_tag l
 - starting_xor_tag:Cstruct.t -> (Tag.t * Cstruct.t) list -> Cstruct.t * Cstruct.t
 - ``TODO: this is also not quite right; in cases where we filter out a hardtail, we'll have a gap at the end of the cstruct``
 - Creates a cstruct cs with size equal to the total length in bytes of the entries in l
 - Calls into_cstructv on starting_xor_tag, cs and l
 - Returns the last tag and cs
+- Serialises a list of entries
 ### of_cstructv ~starting_xor_tag cs
 - starting_xor_tag:Cstruct.t -> Cstruct.t -> (Tag.t * Cstruct.t) list * Cstruct.t * int
 - ``[of_cstructv cs] returns [(l, t, s)] where [l] is the list of (tag, entry) pairs discovered preceding the next CRC entry. [t] the last tag (un-xor'd) for use in seeding future reads or writes. [s] the number of bytes read from [cs], including (if present and read) the CRC tag, data and any padding``
