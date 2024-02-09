@@ -13,13 +13,15 @@
 - Calls Entry.to_cstructv and discards the serialized entry list to get its last tag
 - Creates a new commit with the list of entries appended to the existing list where the seed tag is set to the existing last tag, the last tag is set to the last tag found in the previous step and the start_crc stays the same
 ### let commit_after {last_tag; \_} entries
+- `[commit_after last_commit entries] makes a new commit containing [entries] with its parameters correctly initialized from the information in [last_commit].`
 - t -> Entry.t list -> t
 - Calls Entry.to_cstructv to get the serialized entry list and its last tag
 - `the crc for any entry that's after another one (any non-first entry on a block) doesn't depend on the revision count, so its calculation is more straightforward`
 - Creates a default CRC-32 checksum
 - `we get the final result whther we do a lognot on this or, uh, not, which indicates to me that maybe we're not actually using this value`
-- Creates a new commit with the same entries and seed tag, the last tag set to the last tag found above and the default checksum
+- Creates a new commit containing entries, the seed tag set to last_tag in the commit passed to the function, the last tag set to the last tag found above and the default checksum
 ### of_entries_filter_crc starting_xor_tag preceding_crc entries
+- `[of_entries_filter_crc starting_xor_tag crc l] creates a new commit [t] representing the entries [l]. CRC entries are omitted.`
 - Cstruct.t -> Optint.t -> Entry.t list -> t
 - `we don't want to include the CRC tag in the read-back entry list, since we calculate that on write in our own code`
 - Uses List.filter to get rid of any CRC entries in entries
