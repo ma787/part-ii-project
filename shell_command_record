@@ -66,3 +66,12 @@ Debugging the b-tree code:
 Building and testing b-tree code:
 ~/Project/ocaml-btree/ocaml-btree$ dune build
 ~/Project/ocaml-btree/ocaml-btree$ dune exec ./test.exe
+
+Debugging the b-tree and test code compiled by dune:
+~/Project/ocaml-btree/ocaml-btree$ dune build
+~/Project/ocaml-btree/ocaml-btree$ ocamldebug _build/default/btree.bc
+~/Project/ocaml-btree/ocaml-btree$ ocamldebug _build/default/test.bc
+
+Building and testing b-tree code in chamelon:
+~/Project/chamelon$ dune build
+~/Project/chamelon$ dune exec ./lib_test/test_btree.exe
