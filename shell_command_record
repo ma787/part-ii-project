@@ -33,10 +33,12 @@ Installing chamelon and littlefs-fuse:
 ~/Project/littlefs-fuse-2.7.2/$ cd ~/Project/chamelon-0.1.2
 ~/Project/chamelon-0.1.2$ dune build @default
 
-Mounting the filesystem:
+Formatting the filesystem with chamelon and mounting it with littlefs-fuse:
 ~/Project/chamelon-0.1.2$ sudo _build/default/src/chamelon.exe format /dev/sda1
-~/Project/chamelon-0.1.2$ sudo ~/Project/fuse-littlefs/lfs --block_size=512 -s /dev/sda1 /mnt
-~/Project/chamelon-0.1.2$ cd /Project
+~/Project/chamelon-0.1.2$ sudo ~/Project/littlefs-fuse-2.7.2/lfs --block_size=512 -s /dev/sda1 /mnt
+
+Showing mounted drives:
+~$ findmnt
 
 Running tests:
 ~/Project$ git clone https://github.com/psteinb/iozone2csv.git
@@ -54,7 +56,7 @@ Creating a loop device:
 ~$ dd if=/dev/zero of=image bs=512 count=40000000 (20GB image)
 ~$ losetup /dev/loop22 image
 ~/Project/chamelon$ sudo _build/default/src/chamelon.exe format /dev/loop22
-~/Project/chamelon$ sudo ~/Project/lfs-fuse/lfs --block_size=512 -s /dev/loop22 /mnt
+~/Project/chamelon$ sudo ~/Project/littlefs-fuse-2.7.2/lfs --block_size=512 -s /dev/loop22 /mnt
 
 Detaching loop device:
 ~$ sudo losetup -d /dev/loop22
@@ -75,3 +77,14 @@ Debugging the b-tree and test code compiled by dune:
 Building and testing b-tree code in chamelon:
 ~/Project/chamelon$ dune build
 ~/Project/chamelon$ dune exec ./lib_test/test_btree.exe
+
+Mounting the filesystem using chamelon-fuse:
+~/Project/ocamlfuse-2.7.1_cvs8$ make
+~/Project/ocamlfuse-2.7.1_cvs8$ make chamelon_fuse
+~/Project/ocamlfuse-2.7.1_cvs8$ cd _build/default/chamelon_fuse
+~/Project/ocamlfuse-2.7.1_cvs8/_build/default/chamelon_fuse$ sudo ./chamelon_fuse.exe /mnt
+~/Project/ocamlfuse-2.7.1_cvs8/_build/default/chamelon_fuse$ su
+~/Project/ocamlfuse-2.7.1_cvs8/_build/default/chamelon_fuse# cd /mnt
+
+Unmounting filesystem with FUSE:
+~$ sudo fusermount -u /mnt
