@@ -3,29 +3,30 @@
 CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 PDIR="${CWD%/*}"
 
-cd $PDIR
+cd "$3" || exit
 
-mkdir -p iozoneout
-for i in {1..100}
+mkdir -p "$PDIR"/iozoneout
+for i in $(seq "$2")
 do
-	if [ $i -lt 10 ]
+	if [ "$i" -lt 10 ]
 	then
-		iozone -a $1 > iozone-00$((i)).out
-		cp iozone-00$((i)).out iozoneout
-	elif [ $i -lt 100 ]
+		iozone -a "$1" > "$PDIR"/iozone-00$((i)).out
+	elif [ "$i" -lt 100 ]
 	then
-		iozone -a $1 > iozone-0$((i)).out
-		cp iozone-0$((i)).out iozoneout
+		iozone -a "$1" > "$PDIR"/iozone-0$((i)).out
 	else
-		iozone -a $1 > iozone-$((i)).out
-		cp iozone-$((i)).out iozoneout
+		iozone -a "$1" > "$PDIR"/iozone-$((i)).out
 	fi
+	echo "iozone run $i out of $2 completed"
 done
+
+cd "$PDIR" || exit
+
 ls iozoneout | xargs > f.txt
 cat f.txt | xargs python3 ./iozone2csv.py
 rm f.txt
 rm -rf iozoneout
-for i in {1..100}
+for i in $(seq "$2")
 do
 	if [ $i -lt 10 ]
 	then
