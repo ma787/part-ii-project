@@ -21,7 +21,7 @@ def main():
         sec = t_out_result[-4]
         if unit == "GB":
             res *= 1000
-        else if unit == "KB":
+        elif unit == "KB":
             res /= 1000
     	g.write("{}:{},".format(res, sec))
 
