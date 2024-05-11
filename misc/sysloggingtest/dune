@@ -1,0 +1,3 @@
+(executable
+ (name sysloggingtest)
+ (libraries logs-syslog.lwt lwt))
