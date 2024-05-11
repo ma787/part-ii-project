@@ -13,7 +13,6 @@ for j in 7 8 9 10
 		echo "dd write test run $i out of $1 completed"
     	./get_dd_throughput.sh -i ./o.txt -o "dd_writes.csv"
     done
-    i=$((i+1))
 done
 
 for i in $(seq "$1") 
@@ -25,7 +24,6 @@ do
     	echo "dd write test run $i out of $1 completed"
     	./get_dd_throughput.sh -i ./o.txt -o "dd_reads.csv"
     done
-    i=$((i+1))
 done
 
 rm ./o.txt
