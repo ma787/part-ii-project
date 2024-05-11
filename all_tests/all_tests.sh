@@ -1,13 +1,19 @@
 #!/bin/bash
 
-mkdir -p results
+mkdir -p ../all_results/"$(date +%d-%m-%y)"/"$3"
 
-./tests/dd_tests.sh
-./tests/hdparm_tests.sh $1
-./tests/iozone_tests.sh $1
+mountpoint=$(df --output=target /dev/sda1 | tail -1)
+echo "running tests for device $1 mounted at $mountpoint"
 
-mv ./tests/dd_reads.csv results
-mv ./tests/dd_writes.csv results
-mv ./tests/hdparm_buffered.csv results
-mv ./tests/hdparm_cached.csv results
-mv iozone.csv results
+TIMEFORMAT="Total time spent running tests: %R"
+time {
+./tests/dd_tests.sh "$2" "$mountpoint"
+./tests/hdparm_tests.sh "$1" "$2"
+./tests/iozone_tests.sh "$1" "$2"
+}
+
+mv ./tests/dd_reads.csv ../all_results/"$(date +%d-%m-%y)"/"$3"
+mv ./tests/dd_writes.csv ../all_results/"$(date +%d-%m-%y)"/"$3"
+mv ./tests/hdparm_buffered.csv ../all_results/"$(date +%d-%m-%y)"/"$3"
+mv ./tests/hdparm_cached.csv ../all_results/"$(date +%d-%m-%y)"/"$3"
+mv iozone.csv ../all_results/"$(date +%d-%m-%y)"/"$3"
