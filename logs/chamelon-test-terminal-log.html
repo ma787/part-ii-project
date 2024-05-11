@@ -1,0 +1,477 @@
+<pre><font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project/chamelon-0.1.2</b></font>$ just test
+<b>dune build @default</b>
+<font color="#196C46">          dd</font> src/colossal
+1+0 records in
+1+0 records out
+131072 bytes (131 kB, 128 KiB) copied, 0.000701727 s, 187 MB/s
+<font color="#196C46">          dd</font> src/empty-ls.{expected,output},src/test.img
+1+0 records in
+1+0 records out
+262144 bytes (262 kB, 256 KiB) copied, 0.000629933 s, 416 MB/s
+<font color="#196C46">    chamelon</font> src/empty-ls.{expected,output},src/test.img
+Formatting test.img as a littlefs filesystem with block size 4096
+<font color="#196C46">    chamelon</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] found basename of path /autoexec.bat on block pair 0, 1
+chamelon.exe: [DEBUG] id for &quot;autoexec.bat&quot; not found in 2 entries from 0, 1
+chamelon.exe: [DEBUG] writing new file autoexec.bat, size 3
+chamelon.exe: [DEBUG] writing 2 entries for inline file autoexec.bat
+chamelon.exe: [DEBUG] successfully wrote to autoexec.bat
+<font color="#196C46">    chamelon</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] name &quot;config.sys&quot; is associated with id 2 on blockpair 0,
+                      1
+chamelon.exe: [DEBUG] found 3 entries for id 2 in 0, 1
+chamelon.exe: [DEBUG] after compaction, there were 3 entries for id 2 in 0, 1
+chamelon.exe: [DEBUG] found 3 entries with name config.sys
+<font color="#196C46">    chamelon</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+/config.sys : file
+<font color="#196C46">        echo</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+key config.sys not found
+<font color="#196C46">    chamelon</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+key config.sys not found
+<font color="#196C46">    chamelon</font> src/colossal-ls.{expected,output},src/colossal.bak
+Formatting test.img as a littlefs filesystem with block size 4096
+<font color="#196C46">    chamelon</font> src/colossal-ls.{expected,output},src/colossal.bak
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] found basename of path /colossal.bak on block pair 0, 1
+chamelon.exe: [DEBUG] id for &quot;colossal.bak&quot; not found in 2 entries from 0, 1
+chamelon.exe: [DEBUG] writing new file colossal.bak, size 131072
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] 2 blocks used: 0 1
+chamelon.exe: [DEBUG] adding 16 blocks to lookahead buffer (32, 33, 34, 35,
+                      36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47)
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] 2 blocks used: 0 1
+chamelon.exe: [DEBUG] adding 16 blocks to lookahead buffer (48, 49, 50, 51,
+                      52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63)
+chamelon.exe: [DEBUG] writing 3 entries for ctz for file colossal.bak of size 131072
+chamelon.exe: [DEBUG] successfully wrote to colossal.bak
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] found basename of path /diary.txt on block pair 0, 1
+chamelon.exe: [DEBUG] id for &quot;diary.txt&quot; not found in 6 entries from 0, 1
+chamelon.exe: [DEBUG] writing new file diary.txt, size 45
+chamelon.exe: [DEBUG] writing 2 entries for inline file diary.txt
+chamelon.exe: [DEBUG] successfully wrote to diary.txt
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+/diary.txt : file
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] found basename of path /diary.txt on block pair 0, 1
+chamelon.exe: [DEBUG] name &quot;diary.txt&quot; is associated with id 2 on blockpair 0,
+                      1
+chamelon.exe: [DEBUG] found 3 entries for id 2 in 0, 1
+chamelon.exe: [DEBUG] after compaction, there were 3 entries for id 2 in 0, 1
+chamelon.exe: [DEBUG] deleting existing entry diary.txt at id 2
+chamelon.exe: [DEBUG] writing 2 entries for inline file diary.txt
+chamelon.exe: [DEBUG] successfully wrote to diary.txt
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+/diary.txt : file
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] name &quot;diary.txt&quot; is associated with id 3 on blockpair 0,
+                      1
+chamelon.exe: [DEBUG] found 3 entries for id 3 in 0, 1
+chamelon.exe: [DEBUG] after compaction, there were 3 entries for id 3 in 0, 1
+chamelon.exe: [DEBUG] found 3 entries with name diary.txt
+<font color="#196C46">    chamelon</font> src/ls-secrets.{expected,output},src/read-secrets.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 1 linked blocks
+chamelon.exe: [DEBUG] finding blocks linked from 17, 16
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 4 used blocks on block-based key-value store: 0 1
+                      17 16
+chamelon.exe: [DEBUG] found /secrets in a directory starting at 0,
+                      1, will delete
+chamelon.exe: [DEBUG] name &quot;secrets&quot; is associated with id 4 on blockpair 0,
+                      1
+chamelon.exe: [DEBUG] found 2 entries for id 4 in 0, 1
+chamelon.exe: [DEBUG] after compaction, there were 2 entries for id 4 in 0, 1
+chamelon.exe: [DEBUG] id 4 found for name secrets on block 0, 1
+chamelon.exe: [DEBUG] adding deletion for id 4 on block pair 0, 1
+chamelon.exe: [DEBUG] successfully deleted secrets
+<font color="#196C46">    chamelon</font> src/ls-secrets.{expected,output},src/read-secrets.{expected,output}
+key /secrets not found
+<font color="#196C46">    chamelon</font> src/lfs_ls.bak
+diary.txt : file
+<b>dd if=/dev/zero of=_build/default/src/test.img bs=64K count=1</b>
+1+0 records in
+1+0 records out
+65536 bytes (66 kB, 64 KiB) copied, 0.000438637 s, 149 MB/s
+<b>_build/default/src/chamelon.exe format _build/default/src/test.img</b>
+Formatting _build/default/src/test.img as a littlefs filesystem with block size 4096
+<b>sudo umount -q /mnt || true</b>
+<b>sudo losetup -d /dev/loop22 || true</b>
+<b>sudo rm -r /mnt/* || true</b>
+rm: cannot remove &apos;/mnt/*&apos;: No such file or directory
+<b>sudo losetup /dev/loop22 _build/default/src/test.img</b>
+<b>sudo chmod a+rw /dev/loop22</b>
+<b>sudo /home/mohamed/Project/fuse-littlefs/lfs --block_size=4096 -s /dev/loop22 /mnt</b>
+littlefs/lfs.c:4398:debug: Found older minor version v2.0 &lt; v2.1
+littlefs/lfs.c:4471:debug: Found pending gstate 0x000002000000000000000000
+<b># nb: `ls /mnt` will fail if there are no files at all in the filesystem.</b>
+<b>sudo mkdir /mnt/lib</b>
+<b>sudo cp lib/block.ml /mnt/lib</b>
+<b>_build/default/src/chamelon.exe read _build/default/src/test.img 4096 lib/block.ml</b>
+(* a block is, physically, a revision count and series of commits *)
+(* it can also have a hardtail, pointing at another blockpair where
+ * the directory continues *)
+
+module IdSet = Set.Make(Int)
+
+type t = {
+  revision_count : int;
+  commits : Commit.t list;
+  hardtail : Entry.t option;
+}
+
+type write_result = [ `Ok | `Split | `Split_emergency | `Unwriteable ]
+
+let commits t = t.commits
+let revision_count t = t.revision_count
+
+let entries t = List.(flatten @@ map Commit.entries t.commits)
+
+let crc_of_revision_count revision_count =
+  let start_crc = Checkseum.Crc32.default in
+  let cs = Cstruct.create 4 in
+  let sizeof_crc = 4 in
+  Cstruct.LE.set_uint32 cs 0 (Int32.of_int revision_count);
+  Checkseum.Crc32.(digest_bigstring
+                     (Cstruct.to_bigarray cs) 0 sizeof_crc start_crc)
+
+let linked_blocks t =
+  (* we call `compact` on the entry list because otherwise we&apos;d incorrectly follow
+   * deleted entries *)
+  List.filter_map Entry.links @@ Entry.compact @@ entries t
+
+let of_commits ~hardtail ~revision_count commits =
+  (* we have to redo the crc for the first commit when the revision count changes :( *)
+  (* we don&apos;t have to recalculate CRCs for any subsequent commits because the only data
+   * dependency on a previous commit for later commits in a block
+   * is on the last tag of the previous commit, which is the CRC tag.
+   * The CRC tag&apos;s variable fields are its length and chunk value only,
+   * and changes to the revision count are changes to a fixed-width field that
+   * doesn&apos;t affect the chunk. *)
+  match commits with
+  | [] -&gt; { commits; revision_count; hardtail}
+  | commit :: l -&gt;
+    let crc = crc_of_revision_count revision_count in
+    let new_commit = Commit.(of_entries_filter_crc (seed_tag commit) crc (entries commit)) in
+    {commits = (new_commit :: l); revision_count; hardtail}
+
+let of_entries ~revision_count entries =
+  let crc = crc_of_revision_count revision_count in
+  let commit = Commit.of_entries_filter_crc (Cstruct.of_string &quot;\xff\xff\xff\xff&quot;) crc entries in
+  of_commits ~hardtail:None ~revision_count (commit::[])
+
+let compact t =
+  let revision_count = t.revision_count + 1 in
+  let entries = List.map Commit.entries t.commits |&gt; List.flatten |&gt; Entry.compact in
+  of_entries ~revision_count entries
+
+let add_commit {revision_count; commits; hardtail} entries =
+  let revision_count = revision_count + 1 in
+  match commits with
+  | [] -&gt; of_entries ~revision_count entries
+  | l -&gt;
+    let last = List.(nth l ((length l) - 1)) in
+    let commit = Commit.commit_after last entries in
+    of_commits ~hardtail ~revision_count (l @ [commit])
+
+let hardtail t =
+  match t.hardtail with
+  | None -&gt; None
+  | Some e -&gt; Dir.hard_tail_links e
+
+(* return variants `Split and `Ok are successful; `Split warns that the block
+ * took up more than 1/2 of the block size and the metadata block
+ * should be split into two pairs.
+ *
+ * `Split_emergency means the size of `block` exceeds the block size,
+ * and the data *cannot* be written. A partial serialization remains in [cs] in
+ * this case. *)
+let into_cstruct ~program_block_size cs block =
+  (* the hardtail is handled specially since its presence alters our next_commit_valid
+   * and all entries need to be before it. *)
+  let write_hardtail ~after ~starting_xor_tag ~starting_offset t cs =
+    match t.hardtail with
+    | None -&gt; (0, starting_xor_tag)
+    | Some entry -&gt;
+      let commit = Commit.commit_after after [entry] in
+      Commit.into_cstruct ~filter_hardtail:false ~starting_offset ~program_block_size ~starting_xor_tag
+        ~next_commit_valid:false cs commit
+  in
+  (* if there&apos;s nothing to write, just return *)
+  match block.commits, block.hardtail with
+  | [], None -&gt; `Ok
+  | commits, _ -&gt;
+    Cstruct.LE.set_uint32 cs 0 (Int32.of_int block.revision_count);
+    try
+      let after_last_crc, starting_xor_tag, starting_offset =
+        List.fold_left
+          (fun (pointer, prev_commit_last_tag, starting_offset) commit -&gt;
+             (* it may be a bit surprising that we don&apos;t use `last_tag` from `commit` as the previous tag here.
+              * as serialized, the last tag in the commit is the tag for the CRC, so we need to XOR with that
+              * rather than the last non-CRC tag, which is what&apos;s represented in `commit.last_tag`. *)
+             let this_commit_region = Cstruct.shift cs pointer in
+             let (bytes_written, raw_crc_tag) = Commit.into_cstruct ~filter_hardtail:true ~next_commit_valid:true
+                 ~program_block_size ~starting_xor_tag:prev_commit_last_tag ~starting_offset
+                 this_commit_region commit in
+             (* only the first commit has nonzero offset; all subsequent ones have an offset of 0,
+              * since each commit is padded to a multiple of the program block size. *)
+             (pointer + bytes_written, raw_crc_tag, 0)
+          ) (4, (Cstruct.of_string &quot;\xff\xff\xff\xff&quot;), 4) block.commits
+      in
+      let hardtail_region = Cstruct.shift cs after_last_crc in
+      let hardtail_bytes, _raw_crc =
+        write_hardtail ~after:List.(hd @@ rev commits) ~starting_xor_tag ~starting_offset block hardtail_region
+      in
+      if (after_last_crc + hardtail_bytes) &gt; Cstruct.length cs then `Unwriteable
+      else if (after_last_crc + hardtail_bytes) &gt; ((Cstruct.length cs) / 2) then `Split
+      else `Ok
+    with
+    | Invalid_argument _ -&gt; `Unwriteable
+
+let ids t =
+  let id_of_entry e = (fst e).Tag.id in
+  let commit_ids c = List.map id_of_entry (Commit.entries c) in
+  let block_ids = List.(flatten @@ map commit_ids t.commits) in
+  IdSet.of_list block_ids
+
+let split block next_blockpair =
+  let entry = Dir.hard_tail_at next_blockpair in
+  {block with hardtail = Some entry},
+  of_entries ~revision_count:1 []
+
+let to_cstruct ~program_block_size ~block_size block =
+  let cs = Cstruct.create block_size in
+  let res = into_cstruct ~program_block_size cs block in
+  cs, res
+
+let of_cstruct ~program_block_size cs =
+  if Cstruct.length cs &lt;= Tag.size
+  then Error (`Msg &quot;block is too small to contain littlefs commits&quot;)
+  else begin
+    let revision_count = Cstruct.LE.get_uint32 cs 0 |&gt; Int32.to_int in
+    let revision_count_crc = crc_of_revision_count revision_count in
+    let commit_list = Cstruct.shift cs 4 in
+    let starting_xor_tag = Cstruct.of_string &quot;\xff\xff\xff\xff&quot; in
+    (* the first commit is at an offset of 4, because the revision count is hanging out at the front of the block *)
+    let commits = Commit.of_cstructv ~preceding_crc:revision_count_crc
+        ~starting_offset:4 ~starting_xor_tag ~program_block_size
+        commit_list
+    in
+    let entries = List.(flatten @@ map Commit.entries commits) in
+    let hardtail = List.find_opt (fun (t, _d) -&gt; Tag.is_hardtail t) entries in
+    Ok {revision_count; commits; hardtail}
+  end
+1+0 records in
+1+0 records out
+500 bytes copied, 0.000486626 s, 1.0 MB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.000446281 s, 1.1 MB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.00042998 s, 1.2 MB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.000495814 s, 1.0 MB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.000772519 s, 647 kB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.000531931 s, 940 kB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.000538112 s, 929 kB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.000887312 s, 563 kB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.000508396 s, 983 kB/s
+1+0 records in
+1+0 records out
+500 bytes copied, 0.00077856 s, 642 kB/s
+1 : file
+10 : file
+2 : file
+3 : file
+4 : file
+5 : file
+6 : file
+7 : file
+8 : file
+9 : file
+lib : directory
+
+1 : file
+10 : file
+2 : file
+3 : file
+4 : file
+5 : file
+6 : file
+7 : file
+8 : file
+9 : file
+lib : directory
+moar1 : file
+moar10 : file
+moar11 : file
+moar12 : file
+moar13 : file
+moar14 : file
+moar15 : file
+moar16 : file
+moar17 : file
+moar18 : file
+moar19 : file
+moar2 : file
+moar20 : file
+moar3 : file
+moar4 : file
+moar5 : file
+moar6 : file
+moar7 : file
+moar8 : file
+moar9 : file
+moar data yey 2<b>dune runtest -f</b>
+<font color="#196C46">test_chamelon</font> alias lib_test/runtest
+Testing `<b>littlefs</b>&apos;.
+<font color="#AAAAAA">This run has ID `VU24ET9J&apos;.</font>
+
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">tags</font>               0   read: valid bit.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">tags</font>               1   read: all fields are 1.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">tags</font>               2   read: almost all bits are 1.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">tags</font>               3   write: all bits are 1.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">tags</font>               4   roundtrip print/parse for a data-beari...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">block</font>              0   write a superblock commit to a block.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">block</font>              1   writing a block with different revisio...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">block</font>              2   compacting a block with no deletes has...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">block</font>              3   compacting a block with deletes gives ...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">block</font>              4   splitting a block gets the hardtail ri...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">block</font>              5   roundtrip hardtail conservation.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">entry</font>              0   entry roundtrip.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">file</font>               0   tricky last block index values.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">file</font>               1   sizes of entries.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">roundtrip</font>          0   you got a parser and printer, you know...
+
+Full test results in `<font color="#2AA1B3">~/Project/chamelon-0.1.2/_build/default/lib_test/_build/_tests/littlefs</font>&apos;.
+<font color="#26A269">Test Successful</font> in 0.001s. 15 tests run.
+<font color="#196C46">          dd</font> alias mirage_test/runtest
+10+0 records in
+10+0 records out
+40960 bytes (41 kB, 40 KiB) copied, 0.00018271 s, 224 MB/s
+<font color="#196C46">          dd</font> src/empty-ls.{expected,output},src/test.img
+1+0 records in
+1+0 records out
+262144 bytes (262 kB, 256 KiB) copied, 0.000448425 s, 585 MB/s
+<font color="#196C46">    chamelon</font> src/empty-ls.{expected,output},src/test.img
+Formatting test.img as a littlefs filesystem with block size 4096
+<font color="#196C46"> test_mirage</font> alias mirage_test/runtest
+Testing `<b>mirage-kv</b>&apos;.
+<font color="#AAAAAA">This run has ID `N03MP6GJ&apos;.</font>
+
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">format</font>                 0   format.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">set</font>                    0   get/set roundtrip.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">set</font>                    1   get/set roundtrip w/non-ascii data.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">set</font>                    2   get/set roundtrip w/non-ascii key.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">set</font>                    3   get/set roundtrip w/empty key.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">set</font>                    4   try to set too big a key.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">set</font>                    5   mkdir -p.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">set</font>                    6   disk full.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">last modified</font>          0   last modified increases on overwrite.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">last modified</font>          1   last modified of a directory refle...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">last modified</font>          2   last modified only goes 1 level deep.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">get</font>                    0   get nonexistent value.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">get</font>                    1   get a dictionary.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">get</font>                    2   get a big value.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">get</font>                    3   get valid partial data.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">get</font>                    4   get partial data w/bad offset.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">get</font>                    5   get partial data w/bad length.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">get</font>                    6   get partial data w/bad offset+length.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">get</font>                    7   get partial data in a file within ...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">size</font>                   0   size of something missing.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">size</font>                   1   size of a small file.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">size</font>                   2   size of an empty fs.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">size</font>                   3   size of a directory.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">size</font>                   4   size of some nested stuff.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">digest</font>                 0   digest of empty files w/different ...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">digest</font>                 1   slash digest.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">digest</font>                 2   file overwrite digest.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">digest</font>                 3   dict digest.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">split</font>                  0   we can write files until we run ou...
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">rm</font>                     0   removals are recursive.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">rm</font>                     1   can&apos;t remove /.
+
+Full test results in `<font color="#2AA1B3">~/Project/chamelon-0.1.2/_build/default/mirage_test/_build/_tests/mirage-kv</font>&apos;.
+<font color="#26A269">Test Successful</font> in 1.056s. 31 tests run.
+<font color="#196C46">          dd</font> alias mirage_test/runtest
+10+0 records in
+10+0 records out
+10485760 bytes (10 MB, 10 MiB) copied, 0.0123648 s, 848 MB/s
+<font color="#196C46">   test_dirs</font> alias mirage_test/runtest
+Testing `<b>directories</b>&apos;.
+<font color="#AAAAAA">This run has ID `FI0TFYNF&apos;.</font>
+
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">from_toml</font>          0   root.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">from_toml</font>          1   many directory creation.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">from_toml</font>          2   many directory removal.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">from_toml</font>          3   file creation.
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">from_toml</font>          4   file removal.
+
+Full test results in `<font color="#2AA1B3">~/Project/chamelon-0.1.2/_build/default/mirage_test/_build/_tests/directories</font>&apos;.
+<font color="#26A269">Test Successful</font> in 0.477s. 5 tests run.
+<font color="#196C46"> test_cycles</font> alias mirage_test/runtest
+Testing `<b>cycles</b>&apos;.
+<font color="#AAAAAA">This run has ID `J3UV05Y6&apos;.</font>
+
+  <font color="#26A269">[OK]</font>          <font color="#2AA1B3">simple</font>          0   simple.
+
+Full test results in `<font color="#2AA1B3">~/Project/chamelon-0.1.2/_build/default/mirage_test/_build/_tests/cycles</font>&apos;.
+<font color="#26A269">Test Successful</font> in 0.001s. 1 test run.
+<font color="#196C46">mem_test_read</font> alias mirage_test/runtest
+ASSERT head subset
+ASSERT tail subset
+ASSERT block-straddling read
+</pre>

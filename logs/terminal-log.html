@@ -1,0 +1,144 @@
+<pre><font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project</b></font>$ cd chamelon-0.1.2
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project/chamelon-0.1.2</b></font>$ rm -rf _build
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project/chamelon-0.1.2</b></font>$ dune build
+<font color="#196C46">          dd</font> src/colossal
+1+0 records in
+1+0 records out
+131072 bytes (131 kB, 128 KiB) copied, 0.000707957 s, 185 MB/s
+<font color="#196C46">          dd</font> src/empty-ls.{expected,output},src/test.img
+1+0 records in
+1+0 records out
+262144 bytes (262 kB, 256 KiB) copied, 0.000562036 s, 466 MB/s
+<font color="#196C46">    chamelon</font> src/empty-ls.{expected,output},src/test.img
+Formatting test.img as a littlefs filesystem with block size 4096
+<font color="#196C46">    chamelon</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] found basename of path /autoexec.bat on block pair 0, 1
+chamelon.exe: [DEBUG] id for &quot;autoexec.bat&quot; not found in 2 entries from 0, 1
+chamelon.exe: [DEBUG] writing new file autoexec.bat, size 3
+chamelon.exe: [DEBUG] writing 2 entries for inline file autoexec.bat
+chamelon.exe: [DEBUG] successfully wrote to autoexec.bat
+<font color="#196C46">    chamelon</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] name &quot;config.sys&quot; is associated with id 2 on blockpair 0,
+                      1
+chamelon.exe: [DEBUG] found 3 entries for id 2 in 0, 1
+chamelon.exe: [DEBUG] after compaction, there were 3 entries for id 2 in 0, 1
+chamelon.exe: [DEBUG] found 3 entries with name config.sys
+<font color="#196C46">    chamelon</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+/config.sys : file
+<font color="#196C46">        echo</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+key config.sys not found
+<font color="#196C46">    chamelon</font> src/autoexec.{expected,output},src/read-deleted.{expected,output}
+key config.sys not found
+<font color="#196C46">    chamelon</font> src/colossal-ls.{expected,output},src/colossal.bak
+Formatting test.img as a littlefs filesystem with block size 4096
+<font color="#196C46">    chamelon</font> src/colossal-ls.{expected,output},src/colossal.bak
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] found basename of path /colossal.bak on block pair 0, 1
+chamelon.exe: [DEBUG] id for &quot;colossal.bak&quot; not found in 2 entries from 0, 1
+chamelon.exe: [DEBUG] writing new file colossal.bak, size 131072
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] 2 blocks used: 0 1
+chamelon.exe: [DEBUG] adding 16 blocks to lookahead buffer (32, 33, 34, 35,
+                      36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47)
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] 2 blocks used: 0 1
+chamelon.exe: [DEBUG] adding 16 blocks to lookahead buffer (48, 49, 50, 51,
+                      52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63)
+chamelon.exe: [DEBUG] writing 3 entries for ctz for file colossal.bak of size 131072
+chamelon.exe: [DEBUG] successfully wrote to colossal.bak
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] found basename of path /diary.txt on block pair 0, 1
+chamelon.exe: [DEBUG] id for &quot;diary.txt&quot; not found in 6 entries from 0, 1
+chamelon.exe: [DEBUG] writing new file diary.txt, size 45
+chamelon.exe: [DEBUG] writing 2 entries for inline file diary.txt
+chamelon.exe: [DEBUG] successfully wrote to diary.txt
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+/diary.txt : file
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] found basename of path /diary.txt on block pair 0, 1
+chamelon.exe: [DEBUG] name &quot;diary.txt&quot; is associated with id 2 on blockpair 0,
+                      1
+chamelon.exe: [DEBUG] found 3 entries for id 2 in 0, 1
+chamelon.exe: [DEBUG] after compaction, there were 3 entries for id 2 in 0, 1
+chamelon.exe: [DEBUG] deleting existing entry diary.txt at id 2
+chamelon.exe: [DEBUG] writing 2 entries for inline file diary.txt
+chamelon.exe: [DEBUG] successfully wrote to diary.txt
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+/diary.txt : file
+<font color="#196C46">    chamelon</font> src/rewrite.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 2 used blocks on block-based key-value store: 0 1
+chamelon.exe: [DEBUG] name &quot;diary.txt&quot; is associated with id 3 on blockpair 0,
+                      1
+chamelon.exe: [DEBUG] found 3 entries for id 3 in 0, 1
+chamelon.exe: [DEBUG] after compaction, there were 3 entries for id 3 in 0, 1
+chamelon.exe: [DEBUG] found 3 entries with name diary.txt
+<font color="#196C46">    chamelon</font> src/ls-secrets.{expected,output},src/read-secrets.{expected,output}
+chamelon.exe: [DEBUG] got info from a device with sector size 4096 (0x1000) and 64 (0x40) sectors available
+chamelon.exe: [DEBUG] initiating filesystem with block size 4096 (0x1000)
+chamelon.exe: [DEBUG] mounting fs with file size max 2147483647, name length max 32
+chamelon.exe: [DEBUG] finding blocks linked from 0, 1
+chamelon.exe: [DEBUG] found 1 linked blocks
+chamelon.exe: [DEBUG] finding blocks linked from 17, 16
+chamelon.exe: [DEBUG] found 0 linked blocks
+chamelon.exe: [DEBUG] found 4 used blocks on block-based key-value store: 0 1
+                      17 16
+chamelon.exe: [DEBUG] found /secrets in a directory starting at 0,
+                      1, will delete
+chamelon.exe: [DEBUG] name &quot;secrets&quot; is associated with id 4 on blockpair 0,
+                      1
+chamelon.exe: [DEBUG] found 2 entries for id 4 in 0, 1
+chamelon.exe: [DEBUG] after compaction, there were 2 entries for id 4 in 0, 1
+chamelon.exe: [DEBUG] id 4 found for name secrets on block 0, 1
+chamelon.exe: [DEBUG] adding deletion for id 4 on block pair 0, 1
+chamelon.exe: [DEBUG] successfully deleted secrets
+<font color="#196C46">    chamelon</font> src/ls-secrets.{expected,output},src/read-secrets.{expected,output}
+key /secrets not found
+<font color="#196C46">    chamelon</font> src/lfs_ls.bak
+diary.txt : file
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project/chamelon-0.1.2</b></font>$ cp _build/default/src/test.img ~/Project
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project/chamelon-0.1.2</b></font>$ cd ~/Project
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project</b></font>$ sudo losetup -d /dev/loop18
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project</b></font>$ sudo chmod a+rw /dev/loop18
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project</b></font>$ losetup /dev/loop18 test.img
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project</b></font>$ sudo ./littlefs-fuse-2.7.2/lfs /dev/loop18 mount
+littlefs/lfs.c:4398:debug: Found older minor version v2.0 &lt; v2.1
+littlefs/lfs.c:4446:error: Invalid block count (64 != 512)
+lfs_fuse.c:673:error: Invalid argument
+<font color="#26A269"><b>mohamed@mohamed-LAPTOP</b></font>:<font color="#12488B"><b>~/Project</b></font>$ 
+</pre>
