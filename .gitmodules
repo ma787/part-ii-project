@@ -1,3 +1,6 @@
 [submodule "ocaml-btree"]
 	path = ocaml-btree
 	url = https://github.com/ma787/ocaml-btree.git
+[submodule "chamelon-fuse"]
+	path = chamelon-fuse
+	url = https://github.com/ma787/chamelon-fuse.git
