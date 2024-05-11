@@ -1,13 +1,54 @@
-Setting up ocaml switch:
-~$ opam switch create 4.10.0
-~$ eval $(opam env --switch=4.10.0)
+Setting up git credentials and project repository:
+~$ git config --global user.name "mohamed"
+~$ git config --global user.email "mo501@cam.ac.uk
+~$ git config --system credential.helper store
+~$ echo "https://ma787:<personal access token>@github.com > ~/.git-credentials
+~$ git clone --recurse-submodules https://github.com/ma787/part-ii-project
+~/part-ii-project$ git status  # confirm repo is up-to-date and working tree is clean
 
-Installing chamelon dependencies (NOTE: had issue with package conflicts so installed manually to be safe):
+Adding submodules to repo:
+~/part-ii-project$ git submodule add https://github.com/ma787/ocaml-btree.git
+~/part-ii-project$ git commit -am "Add ocaml-btree module"
+~/part-ii-project$ git push origin main
+~/part-ii-project$ git submodule add https://github.com/ma787
+
+Adding gitignore to repo:
+~/part-ii-project$ git add .gitignore
+
+Removing commits or submodule:
+~/part-ii-project$ git reset --hard origin/main  # remove commits
+~/part-ii-project$ git rm ocaml-btree  # remove ocaml-btree submodule
+
+Resolving issues with chamelon-fuse submodule:
+~/part-ii-project$ git submodule update
+~/part-ii-project/chamelon-fuse$ git status  # showed detached head
+~/part-ii-project/chamelon-fuse$ git commit -am "support dune 2.9 and remove chamelon_fuse folder"
+~/part-ii-project/chamelon-fuse$ git switch -c temp-branch
+~/part-ii-project/chamelon-fuse$ git switch master
+~/part-ii-project/chamelon-fuse$ git merge temp-branch
+~/part-ii-project/chamelon-fuse$ git push origin master
+~/part-ii-project$ git commit -am "Update chamelon fuse"
+~/part-ii-project$ git push origin main
+
+Adding chamelon to chamelon-fuse submodule:
+~/part-ii-project/chamelon-fuse$ git submodule add https://github.com/ma787/chamelon
+~/part-ii-project/chamelon-fuse$ git commit -am "Add chamelon submodule to chamelon fuse"
+~/part-ii-project/chamelon-fuse$ git push origin master
+~/part-ii-project$ git push origin main
+
+Creating switch:
+~$ opam switch create project-switch 4.10.0
+~$ eval $(opam env --switch=project-switch)
+~$ opam switch show  # show the current switch to confirm
+
+Installing required packages (did not use .opam file due to outdated packages):
+-------- chamelon ----------
 ~$ opam install dune=2.9.3
 ~$ opam install alcotest=1.5.0 --with-test
 ~$ opam install alcotest-lwt=1.5.0 --with-test
 ~$ opam install bechamel=0.4.0 --with-test
 ~$ opam install bechamel-js=0.4.0 --with-test
+~$ opam install bos=0.2.0
 ~$ opam install checkseum=0.3.2
 ~$ opam install fpath=0.7.3 --with-test
 ~$ opam install crowbar=0.2.1 --with-test
@@ -22,69 +63,96 @@ Installing chamelon dependencies (NOTE: had issue with package conflicts so inst
 ~$ opam install mirage-crypto-rng=0.10.6 --with-test
 ~$ opam install mirage-kv=4.0.1
 ~$ opam install mirage-logs=1.2.0
-~$ opam install ocaml-lsp-server=1.4.1 # for use with vscode
+-------- ocamlfuse ----------
+~$ opam install camlidl=1.12
+~$ opam install conf-libfuse
+~$ opam install logs-syslog
+-------- vscode ----------
+~$ opam install ocaml-lsp-server=1.4.1
 
-Installing chamelon and littlefs-fuse:
-~/Project$ git clone https://github.com/yomimono/chamelon.git
-~/Project$ sudo apt install libfuse-dev
-~/Project$ git clone https://github.com/littlefs-project/littlefs-fuse.git
-~/Project$ cd littlefs-fuse-2.7.2
-~/Project/littlefs-fuse-2.7.2/$ make
-~/Project/littlefs-fuse-2.7.2/$ cd ~/Project/chamelon-0.1.2
-~/Project/chamelon-0.1.2$ dune build @default
+Exporting switch state to file:
+~/part-ii-project$ opam switch export project-switch.txt
 
-Formatting the filesystem with chamelon and mounting it with littlefs-fuse:
-~/Project/chamelon-0.1.2$ sudo _build/default/src/chamelon.exe format /dev/sda1
-~/Project/chamelon-0.1.2$ sudo ~/Project/littlefs-fuse-2.7.2/lfs --block_size=512 -s /dev/sda1 /mnt
+Installing vanilla chamelon:
+~/part-ii-project$ git clone https://github.com/yomimono/chamelon.git
+~/part-ii-project/chamelon-0.1.2$ dune build
+
+Installing littlefs-fuse:
+~$ sudo apt install libfuse-dev
+~/part-ii-project$ git clone https://github.com/littlefs-project/littlefs-fuse.git
+~/part-ii-project/littlefs-fuse-2.7.2$ make
+
+Installing fuse-ext2:
+~$ sudo apt install m4 autoconf automake libtool
+~$ sudo apt install e2fsprogs comerr-dev e2fslibs-dev
+~/part-ii-project$ git clone https://github.com/alperakcan/fuse-ext2.git
+~/part-ii-project/fuse-ext2$ ./autogen.sh
+~/part-ii-project/fuse-ext2$ ./configure
+~/part-ii-project/fuse-ext2$ make
+~/part-ii-project/fuse-ext2$ sudo make install
+
+Adding iozone2csv.py to test suite:
+~/part-ii-project/all_tests$ git clone https://github.com/psteinb/iozone2csv.git
+~/part-ii-project/all_tests$  cp iozone2csv/iozone2csv.py .
+
+Formatting a device /dev/sda1 with chamelon and mounting it with littlefs-fuse:
+~/part-ii-project$ sudo chamelon-0.1.2/_build/default/src/chamelon.exe format /dev/sda1
+~/part-ii-project$ sudo littlefs-fuse-2.7.2/lfs --block_size=512 -s /dev/sda1 /mnt
+/mnt#  # can access mountpoint here as root
 
 Showing mounted drives:
 ~$ findmnt
 
-Running tests:
-~/Project$ git clone https://github.com/psteinb/iozone2csv.git
-~/Project$ cp iozone2csv/iozone2csv.py all_tests
-~/Project$ rm -rf iozone2csv
-~/Project$ cd all_tests
-~/Project/all_tests$ sudo ./all_tests.sh /dev/sda1
+Unmounting device mounted at /mnt with FUSE
+~$ sudo rm -rf /mnt/*:
+~$ sudo fusermount -u /mnt
 
-Unmounting filesystem:
-~/Project$ sudo rm -rf /mnt/*
-~/Project$ sudo umount -v /mnt
-
-Creating a loop device:
-~$ sudo chmod a+rw /dev/loop22
-~$ dd if=/dev/zero of=image bs=512 count=40000000 (20GB image)
+Creating, formatting and mounting a loop device :
+~$ sudo chmod a+rw /dev/loop67
+~$ dd if=/dev/zero of=image bs=4K count=500000 (2GB image)
 ~$ losetup /dev/loop22 image
-~/Project/chamelon$ sudo _build/default/src/chamelon.exe format /dev/loop22
-~/Project/chamelon$ sudo ~/Project/littlefs-fuse-2.7.2/lfs --block_size=512 -s /dev/loop22 /mnt
+~/part-ii-project$ sudo chamelon-0.1.2/_build/default/src/chamelon.exe format /dev/loop67
+~/part-ii-project$ sudo littlefs-fuse-2.7.2/lfs --block_size=512 -s /dev/loop67 /mnt
 
 Detaching loop device:
-~$ sudo losetup -d /dev/loop22
+~$ sudo losetup -d /dev/loop67
 
 Debugging the b-tree code:
-~/Project/ocaml-btree/ocaml-btree$ ocamlc -g btree.ml -o btree.out
-~/Project/ocaml-btree/ocaml-btree$ ocamldebug btree.out
+~/part-ii-project/ocaml-btree$ ocamlc -g btree.ml -o btree.out
+~/part-ii-project/ocaml-btree/ocaml-btree$ ocamldebug btree.out
 
-Building and testing b-tree code:
-~/Project/ocaml-btree/ocaml-btree$ dune build
-~/Project/ocaml-btree/ocaml-btree$ dune exec ./test.exe
+Building the b-tree code and running tests with dune:
+~/part-ii-project/ocaml-btree$ dune build
+~/part-ii-project/ocaml-btree$ dune exec ./test.exe
 
-Debugging the b-tree and test code compiled by dune:
-~/Project/ocaml-btree/ocaml-btree$ dune build
-~/Project/ocaml-btree/ocaml-btree$ ocamldebug _build/default/btree.bc
-~/Project/ocaml-btree/ocaml-btree$ ocamldebug _build/default/test.bc
+Debugging the b-tree code compiled by dune with ocamldebug:
+~/part-ii-project/ocaml-btree$ dune build
+~/part-ii-project/ocaml-btree$ ocamldebug _build/default/btree.bc
+~/part-ii-project/ocaml-btree$ ocamldebug _build/default/test.bc
 
-Building and testing b-tree code in chamelon:
-~/Project/chamelon$ dune build
-~/Project/chamelon$ dune exec ./lib_test/test_btree.exe
+Building and testing b-tree code in chamelon's source directory:
+~/part-ii-project/chamelon-fuse$ make
+~/part-ii-project/chamelon-fuse/chamelon$ dune exec ./lib_test/test_btree.exe
 
-Mounting the filesystem using chamelon-fuse:
-~/Project/ocamlfuse-2.7.1_cvs8$ make
-~/Project/ocamlfuse-2.7.1_cvs8$ make chamelon_fuse
-~/Project/ocamlfuse-2.7.1_cvs8$ cd _build/default/chamelon_fuse
-~/Project/ocamlfuse-2.7.1_cvs8/_build/default/chamelon_fuse$ sudo ./chamelon_fuse.exe /mnt
-~/Project/ocamlfuse-2.7.1_cvs8/_build/default/chamelon_fuse$ su
-~/Project/ocamlfuse-2.7.1_cvs8/_build/default/chamelon_fuse# cd /mnt
+Formatting and mounting a device /dev/sda1 with the modified chamelon code and FUSE driver:
+~/part-ii-project/chamelon-fuse$ make
+~/part-ii-project/chamelon-fuse$ sudo _build/default/chamelon/fuse/fuse.exe /mnt 4096 /dev/sda1
 
-Unmounting filesystem with FUSE:
-~$ sudo fusermount -u /mnt
+Testing modified filesystem with chamelon.exe:
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ dd if=/dev/zero of=image.img bs=1M count=1
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ ./chamelon.exe format image.img 4096
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ echo "hello, this is a test" | ./chamelon.exe write image.img 4096 h1.txt
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ ./chamelon.exe read image.img 4096 h1.txt
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ echo "hello, this is test 2" > h2.txt
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ cat h2.txt | ./chamelon.exe write image.img 4096 h2.txt
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ ./chamelon.exe read image.img 4096 h2.txt
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ cat ~/part-ii-project/misc/projectproposalfinalmodified.pdf | ./chamelon.exe write image.img 4096 project.pdf
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ ./chamelon.exe ls image.img 4096 /
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ ./chamelon.exe read image.img 4096 project.pdf
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ cat ~/part-ii-project/misc/testcase2.txt | ./chamelon.exe write image.img 512 testcase2.txt
+~/part-ii-project/chamelon-fuse/_build/default/chamelon/src$ ./chamelon.exe read image.img 512 testcase2.txt
+
+Running the test suite 100 times on an ext4-formatted and currently mounted device /dev/sda1:
+~/part-ii-project/all_tests$  rm -rf iozone2csv
+~/part-ii-project/all_tests$  sudo ./all_tests.sh /dev/sda1 512 ext4
+
