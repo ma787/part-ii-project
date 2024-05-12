@@ -9,24 +9,24 @@ def main():
     parser.add_argument("-i")
     parser.add_argument("-o")
     args = parser.parse_args()
-    
+
     with open(args.i, "r") as f:
-    	t_out_arr = f.readlines()
-    print(t_out_arr)
+        t_out_arr = f.readlines()
     t_out_result = t_out_arr[2].split(" ")
-    
+
     with open(args.o, "a") as g:
         res = int(t_out_result[-2])
         unit = t_out_result[-1][:2]
         sec = t_out_result[-4]
+        print("throughput: {} {}, time taken: {}".format(res, unit, sec))
         if unit == "GB":
             res *= 1000
         elif unit == "KB":
             res /= 1000
-    	g.write("{}:{},".format(res, sec))
+        g.write("{}:{},".format(res, sec))
 
 if __name__ == "__main__":
     try:
-    	sys.exit(main())
+        sys.exit(main())
     except KeyboardInterrupt:
-    	pass
+        pass
