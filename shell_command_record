@@ -1,8 +1,8 @@
 Setting up git credentials and project repository:
 ~$ git config --global user.name "mohamed"
 ~$ git config --global user.email "mo501@cam.ac.uk
-~$ git config --system credential.helper store
-~$ echo "https://ma787:<personal access token>@github.com > ~/.git-credentials
+~$ sudo git config --system credential.helper store
+~$ echo "https://ma787:<personal access token>@github.com" > ~/.git-credentials
 ~$ git clone --recurse-submodules https://github.com/ma787/part-ii-project
 ~/part-ii-project$ git status  # confirm repo is up-to-date and working tree is clean
 
